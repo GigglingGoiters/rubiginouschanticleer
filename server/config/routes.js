@@ -56,11 +56,7 @@ module.exports = function ( app, express ) {
   // This endpoint answers the question, 'For session <id>, do we currently have a match on movie <id>?'
   app.get('/api/sessions/:session_id/match/:movie_id', votesController.checkMatch );
 
-
-
-  // passport routes =========================================================
-  // route to handle all facebook passport requests
-
+  /* FACEBOOK */
   app.get('/login/facebook',
     passport.authenticate('facebook', {scope: ['user_friends']}));
 
@@ -69,9 +65,6 @@ module.exports = function ( app, express ) {
     function(req, res) {
       res.redirect('/');
     });
-
-
-
 
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
