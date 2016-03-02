@@ -26,7 +26,7 @@ angular.module( 'moviematch.services', [] )
 
     signout : function() {
       $window.localStorage.removeItem( 'com.moviematch' );
-    }, 
+    },
 
     setUserName : function( user ) {
       $window.localStorage.setItem( 'username', user.username );
@@ -35,7 +35,7 @@ angular.module( 'moviematch.services', [] )
     getUserName : function () {
       return $window.localStorage.getItem( 'username' );
     }
-  } 
+  }
 } )
 
 .factory( 'Session', function( $http, $window, $location ) {
@@ -56,8 +56,8 @@ angular.module( 'moviematch.services', [] )
         return response.data;
       }, function( err ) {
         console.error( err );
-      } ); 
-    }, 
+      } );
+    },
 
     joinSession: function( sessionName, username, callback ) {
       return $http.post( '/api/sessions/users', { sessionName: sessionName, username: username } )
@@ -72,7 +72,7 @@ angular.module( 'moviematch.services', [] )
 
     setSession: function( sessionName ) {
       $window.localStorage.setItem( 'sessionName', sessionName );
-    }, 
+    },
 
     getSession: function() {
       var sessionName = $window.localStorage.getItem( 'sessionName' );
@@ -133,11 +133,26 @@ angular.module( 'moviematch.services', [] )
       return $http.get( '/api/sessions/users/' + sessionName )
       .then( function( res ) {
         return res.data;
-      } , 
+      } ,
       function( err ) {
         console.error( err );
       } );
     }
+  }
+})
+
+.factory( 'Movies', function ($http) {
+  return {
+    searchMovies: function (query) {
+      return $http.get('/api/movies/search/' + query)
+      .then( function (res) {
+        return res.data;
+      },
+      function (err) {
+        console.log(err);
+      });
+    }
+
   }
 })
 
