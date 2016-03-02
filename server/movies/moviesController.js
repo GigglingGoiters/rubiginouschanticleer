@@ -23,17 +23,18 @@ module.exports = {
 
   getSearchResults: function (req, res, next) {
     var query = req.params.query;
-    var options = {
-        url: searchUrl + '?api_key=' + api_key + '&query=' + query,
-        page: 1
-    };
-    request.get(options, function (error, response, body) {
-      if (error) {
-        console.log("search movies request:", error);
-      } else {
-        res.end(body);
-      }
-    });
+    console.log(query);
+    // var options = {
+    //     url: searchUrl + '?api_key=' + api_key + '&query=' + query,
+    //     page: 1
+    // };
+    // request.get(options, function (error, response, body) {
+    //   if (error) {
+    //     console.log("search movies request:", error);
+    //   } else {
+    //     res.end(body);
+    //   }
+    // });
 
   }
 

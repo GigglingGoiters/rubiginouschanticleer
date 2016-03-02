@@ -144,7 +144,11 @@ angular.module( 'moviematch.services', [] )
 .factory( 'Movies', function ($http) {
   return {
     searchMovies: function (query) {
-      return $http.get('/api/movies/search/' + query)
+      return $http({
+        url: '/api/movies/search/',
+        method: "GET",
+        params: {query: query}
+      })
       .then( function (res) {
         return res.data;
       },
