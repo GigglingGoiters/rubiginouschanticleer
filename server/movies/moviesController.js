@@ -19,7 +19,7 @@ module.exports = {
     var movieID = parseInt( req.params.movie_id );
     var movie = Movies.getMovie( movieID );
     res.json( movie );
-  }
+  },
 
   getSearchResults: function (req, res, next) {
     var query = req.params.query;
