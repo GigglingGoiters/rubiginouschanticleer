@@ -7,10 +7,10 @@ var io = require( 'socket.io' )( http );
 var Session = require( './sessions/sessions' );
 var User = require( './users/users' );
 
-// * facebook authentication resources *
+// facebook authentication resources
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
-var env = require('/config/env.js');
+var env = require('./config/env');
 
 io.on( 'connect' , function( socket ){
   console.log( 'we are connected!!' );
