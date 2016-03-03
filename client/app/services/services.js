@@ -142,24 +142,37 @@ angular.module( 'moviematch.services', [] )
 })
 
 .factory( 'Movies', function ($http) {
-  return {
-    searchMovies: function (query) {
-      console.log('WE SEARCHING FOR MOVIES FROM SERVICES with this query', query);
-      return $http({
-        url: '/api/movies/search/',
-        method: "POST",
-        data: {query: query}
-      })
-      .then( function (res) {
-        console.log('WE IN THE SEARCHMOVIES . THEN AREA with this res', res);
-        return res.data;
-      },
-      function (err) {
-        console.log('WE IN THE SEARCHMOVIES . ERROR AREA with this err', err);
-        console.log(err);
-      });
-    }
+  var searchMovies = function (query) {
+    return $http({
+      url: '/api/movies/search/',
+      method: "POST",
+      data: {query: query}
+    })
+    .then( function (res) {
+      return res.data;
+    },
+    function (err) {
+      console.log(err);
+    });
+  };
 
+  var saveMovie = function(movies) {
+    return $http({
+      url: '/api/movies/save/',
+      method: "POST",
+      data: {movies: movies}
+    })
+    .then( function (res) {
+      return res.data;
+    },
+    function (err) {
+      console.log(err);
+    });
+  };
+
+  return {
+    searchMovies: searchMovies,
+    saveMovie: saveMovie
   };
 })
 

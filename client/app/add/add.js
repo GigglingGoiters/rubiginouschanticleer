@@ -28,8 +28,14 @@ angular.module( 'moviematch.add', [] )
     $scope.movies.push(movie);
   };
 
-  $scope.startSession = function (sessionName) {
+  $scope.startSession = function (sessionName, movies) {
     console.log('The START SESSION BUTTON RESPONSE', sessionName);
+    console.log('these are the movies: ', movies);
+    Movies.saveMovie(movies);
+    Socket.emit( 'startSession', { sessionName: sessionName } );
   };
 
+  Socket.on( 'sessionStarted', function() {
+    $location.path( '/match' );
+  } );
 });

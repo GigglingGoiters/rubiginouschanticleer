@@ -23,7 +23,6 @@ module.exports = {
 
   getSearchResults: function (req, res, next) {
     var query = req.body.query;
-    console.log('req.body ==========================>>>>>>>', query);
 
     var options = { method: 'GET',
      url: 'http://api.themoviedb.org/3/search/movie',
@@ -39,6 +38,13 @@ module.exports = {
      console.log(body);
      res.end(body);
     });
+  },
+
+  saveMovie: function (req, res, next) {
+    var movies = req.body.movies;
+    console.log('made it into movieController.saveMovie with these movies:' , movies);
+    var sessionName = req.params.sessionName;
+    Movies.create({});
   }
 
 };

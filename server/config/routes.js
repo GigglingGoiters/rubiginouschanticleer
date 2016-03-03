@@ -27,6 +27,7 @@ module.exports = function ( app, express ) {
   app.get('/api/movies/package/:number', moviesController.getMoviePackage );
   app.get('/api/movies/:movie_id', moviesController.getMovie );
   app.post('/api/movies/search/', moviesController.getSearchResults );
+  app.post('/api/movies/save/', moviesController.saveMovie);
 
   /* PREFS */
   app.get('/api/prefs', prefsController.getPrefs );
