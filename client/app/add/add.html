@@ -1,0 +1,55 @@
+<div id="match" class="container">
+    <div data-wrapper-for="Grid1" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>
+                    Use the search bar to add movies to your queue!
+                </h3>
+                <p>
+                    Once everyone presses &quot;Done&quot; the matching will begin.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input ng-model="query" placeholder="search here"><button type="submit" ng-click="searchMovies()">search</button>
+        <div class="container">
+          <div class="row" ng-repeat="result in results">
+            <hr>
+            <div ng-click="addToQueue(result)" class="btn lead col-xs-1">{{ result.title }}</div>
+            <div class="col-xs-2 col-xs-offset-1">Year: {{ result.release_date.substring(0,4) }}</div>
+          </div>
+        </div>
+    </div>
+    <form class="form-inline" role="form" name=>
+        <div class="form-group ">
+            <div>
+              <hr>
+            </div>
+            <h4>
+                Movies in queue:
+            </h4>
+        </div>
+        <div class="row movies" ng-repeat="movie in movies">
+          <div class="lead col-xs-2">
+              {{ movie.title }}
+          </div>
+          <hr>
+        </div>
+    </form>
+    <div data-wrapper-for="Grid4" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-success btn-lg" type="button" ng-click="startSession( session.sessionName, movies)">
+                    <span class="ion ion-arrow-right-b" style="color: black;">
+                    </span>
+                    Done
+                </button>
+            </div>
+            <div class="col-xs-3">
+            </div>
+        </div>
+    </div>
+</div>

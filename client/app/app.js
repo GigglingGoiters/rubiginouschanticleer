@@ -5,6 +5,7 @@ var app = angular.module( 'moviematch', [
   'moviematch.sessions',
   'moviematch.authServices',
   'moviematch.sessionServices',
+  'moviematch.services',
   'moviematch.matchServices',
   'moviematch.lobbyServices',
   'moviematch.miscServices',
@@ -13,7 +14,8 @@ var app = angular.module( 'moviematch', [
   'ngRoute',
   'btford.socket-io',
   'moviematch.directive',
-  'moviematch.dstValidateUser'
+  'moviematch.dstValidateUser',
+  'moviematch.add'
   ])
 
 .config( function ( $routeProvider, $httpProvider ) {
@@ -48,6 +50,11 @@ var app = angular.module( 'moviematch', [
     .when( '/showmatch/:id', {
       templateUrl: 'app/showmatch/showmatch.html',
       controller: 'ShowmatchController',
+      authenticate: true
+    })
+    .when( '/add', {
+      templateUrl: 'app/add/add.html',
+      controller: 'AddController',
       authenticate: true
     })
     .otherwise({
