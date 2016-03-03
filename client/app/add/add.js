@@ -12,7 +12,7 @@ angular.module( 'moviematch.add', [] )
       Movies.searchMovies($scope.query)
       .then( function () {
         $scope.updateMovieResults();
-      })
+      });
     }
     $scope.query = '';
   };
@@ -21,4 +21,4 @@ angular.module( 'moviematch.add', [] )
 
   };
 
-})
+});

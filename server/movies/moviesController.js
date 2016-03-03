@@ -22,19 +22,23 @@ module.exports = {
   },
 
   getSearchResults: function (req, res, next) {
-    var query = req.params.query;
-    console.log(query);
-    // var options = {
-    //     url: searchUrl + '?api_key=' + api_key + '&query=' + query,
-    //     page: 1
-    // };
-    // request.get(options, function (error, response, body) {
-    //   if (error) {
-    //     console.log("search movies request:", error);
-    //   } else {
-    //     res.end(body);
-    //   }
-    // });
+    var query = req.body.query;
+    console.log('req.body ==========================>>>>>>>', query);
+
+    var options = { method: 'GET',
+     url: 'http://api.themoviedb.org/3/search/movie',
+     qs: 
+      { api_key: 'c062102bb9e2f7a7ab5d2a0f7fb7f2d0',
+        query: query },
+     headers: 
+      { 'postman-token': '617cd5a3-78db-0ae0-0d80-cffed6da26e4',
+        'cache-control': 'no-cache' } };
+
+    request(options, function (error, response, body) {
+     if (error) throw new Error(error);
+     console.log(body);
+     res.end(body);
+    });
   }
 
 };

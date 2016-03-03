@@ -5,6 +5,7 @@ var app = angular.module( 'moviematch', [
   'moviematch.sessions',
   'moviematch.authServices',
   'moviematch.sessionServices',
+  'moviematch.services',
   'moviematch.matchServices',
   'moviematch.lobbyServices',
   'moviematch.miscServices',
