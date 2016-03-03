@@ -1,3 +1,5 @@
+server/config/moviematch.sqlite
+
 # Logs
 logs
 *.log
