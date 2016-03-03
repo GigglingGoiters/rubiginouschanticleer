@@ -10,15 +10,26 @@ angular.module( 'moviematch.add', [] )
   $scope.searchMovies = function () {
     if($scope.query.replace(/\s/g, '') !== ''){
       Movies.searchMovies($scope.query)
-      .then( function () {
-        $scope.updateMovieResults();
+      .then( function (data) {
+        console.log('here the data data data', data);
+        $scope.updateMovieResults(data);
       });
     }
     $scope.query = '';
   };
 
-  $scope.updateMovieResults = function () {
+  $scope.updateMovieResults = function (data) {
+    $scope.results = data.results;
+  };
 
+  $scope.addToQueue = function (movie) {
+    console.log('movie from addToQueue function', movie);
+    $scope.movies = $scope.movies || [];
+    $scope.movies.push(movie);
+  };
+
+  $scope.startSession = function (sessionName) {
+    console.log('The START SESSION BUTTON RESPONSE', sessionName);
   };
 
 });
